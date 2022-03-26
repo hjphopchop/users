@@ -1,0 +1,10 @@
+.basicBtn {
+    padding:  5px 20px;
+    margin: 2vh 3vw;
+    color: white;
+    font-size: 14px;
+    background-color: rgba(75, 81, 239, 1);
+    border-radius: 5px;
+    cursor: pointer;
+    }
+    
