@@ -1,14 +1,14 @@
 import React from 'react'
 
-const UserItem = () => {
+const UserItem = (props) => {
   return (
     <div className='user'>
-        <div>
-            <div>ФИО : Иван Иванов</div>
-            <div>Город : Москва</div>
-            <div>Компания : ООО "Пример"</div>
-        </div>
-        <div>Подробнее</div>
+        <ul> 
+            <li> ФИО: <span>{props.item.name}</span>  </li>
+            <li> Город: <span>{props.item.address.city}</span>  </li>
+            <li> Компания: <span>{props.item.company.name}</span>  </li>
+        </ul>
+        <div>Подробнее </div>
     </div>
   )
 }

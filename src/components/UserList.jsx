@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import  "../styles/app.css"
 import UserItem from './UserItem'
 import Service from '../API/Service'
-import axios from 'axios'
 
 const UserList = () => {
    const[users, setUsers] = useState([]);
     
-
     useEffect(() => {
         const fetchData = async() => {
             const response = await Service.getUsers();
@@ -16,32 +14,23 @@ const UserList = () => {
         fetchData()
        
     }, [setUsers])
-  
+    
+    if(!users.length){
+        return(
+            <h1>Пользователи не получены</h1>
+        )
+    }
    
   return (
     <div  className='usersList'>
-        
-            {(users.length !==0) 
-            ?
-              users.map(item => (
-                  <div  key = {item.id} className="user"> 
-                    <ul>
-                 
-                 <li> ФИО: <span>{item.name}</span>  </li>
-                 <li> Город: <span>{item.address.city}</span>  </li>
-                 <li> Компания: <span>{item.company.name}</span>  </li>
-                 </ul>
-                 <div>Подробнее </div>
-                  </div>
-               
-                
-                
-              ))
-              
-              :
-              <h1>govno</h1>
-}
-        
+        <h1>Список пользователей</h1>
+        {users.map(item =>
+            <UserItem
+                key = {item.id}
+                className="user"
+                item ={item} 
+            />   
+              )}
     </div>
   )
 }
