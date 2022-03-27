@@ -9,9 +9,27 @@
 }
 
 .rex{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: black; 
     display: flex;
    
     
+}
+
+.usersList{
+    margin: 0vh auto;
+    max-width: 90%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.user{
+    
+    display: flex;
+    padding: 2vh 3vw;
+    margin-top: 2vh;
+    justify-content:space-around ;
+    background-color: rgba(243, 243, 243, 1);
+    align-items: flex-end;
 }
