@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import  "../styles/app.css"
 import UserItem from './UserItem'
 import Service from '../API/Service'
+import Loader from './UI/loader/Loader'
 
 const UserList = () => {
    const[users, setUsers] = useState([]);
@@ -17,7 +18,10 @@ const UserList = () => {
     
     if(!users.length){
         return(
-            <h1>Пользователи не получены</h1>
+            <div>
+               <Loader/>
+            </div>
+            
         )
     }
    
