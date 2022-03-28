@@ -4,8 +4,8 @@ import './styles/app.css';
 
 function App() {
     return (
-        <div className='rex'>
-            <SidePanel/>
+        <div>
+            
         <UserList/>
         </div>
         

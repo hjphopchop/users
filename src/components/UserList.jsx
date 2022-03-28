@@ -3,9 +3,12 @@ import  "../styles/app.css"
 import UserItem from './UserItem'
 import Service from '../API/Service'
 import Loader from './UI/loader/Loader'
+import BasicBytton from './UI/button/BasicBytton'
+import SidePanel from './UI/sidePanel/SidePanel'
 
 const UserList = () => {
    const[users, setUsers] = useState([]);
+   const[sortedField, setSortedField] = useState(null)
     
     useEffect(() => {
         const fetchData = async() => {
@@ -14,7 +17,43 @@ const UserList = () => {
         }
         fetchData()
        
-    }, [setUsers])
+    }, [])
+   
+    
+       let  sortedUsers =[...users];
+       if(sortedField!== null) {
+           switch(sortedField){
+            case 'name':
+            sortedUsers.sort((a,b) => {
+                if(a[sortedField] < b[sortedField]) {
+                    return -1;
+                }
+                if(a[sortedField]>b[sortedField]){
+                    return 1;
+                }
+                return 0;
+            })
+            
+            
+            case "company":
+                sortedUsers.sort((a,b) => {
+                    if(a[sortedField].name < b[sortedField].name) {
+                        return -1;
+                    }
+                    if(a[sortedField].name>b[sortedField].name){
+                        return 1;
+                    }
+                    return 0;
+                })
+                
+           }
+           
+       
+        
+       }
+    
+    
+    
     
     if(!users.length){
         return(
@@ -26,9 +65,17 @@ const UserList = () => {
     }
    
   return (
-    <div  className='usersList'>
+      <div className='rex'>
+              <SidePanel
+             setter={setSortedField}
+              sort1={"name"}
+              sort2={"company"}
+             
+              />
+          
+           <div  className='usersList'>
         <h1>Список пользователей</h1>
-        {users.map(item =>
+        {sortedUsers.map(item =>
             <UserItem
                 key = {item.id}
                 className="user"
@@ -36,6 +83,8 @@ const UserList = () => {
             />   
               )}
     </div>
+      </div>
+   
   )
 }
 
