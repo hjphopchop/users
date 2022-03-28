@@ -7,32 +7,13 @@ import BasicBytton from './UI/button/BasicBytton'
 import SidePanel from './UI/sidePanel/SidePanel'
 import { UseSortedUsers } from '../hooks/useUsers'
 
-const UserList = () => {
-   const[users, setUsers] = useState([]);
-   const[sortedField, setSortedField] = useState(null)
-   const sortedUsers = UseSortedUsers(users, sortedField);
-    
-    useEffect(() => {
-        const fetchData = async() => {
-            const response = await Service.getUsers();
-            setUsers(response)
-        }
-        fetchData()
-       
-    }, [])
+const UserList = ({users}) => {
+   
     
   return (
-      <div className='rex'>
-              <SidePanel
-             setter={setSortedField}
-              sort1={"name"}
-              sort2={"company"}
-             
-              />
-          
            <div  className='usersList'>
         <h1>Список пользователей</h1>
-        {sortedUsers.map(item =>
+        {users.map(item =>
             <UserItem
                 key = {item.id}
                 className="user"
@@ -40,7 +21,7 @@ const UserList = () => {
             />   
               )}
     </div>
-      </div>
+      
   )
 }
 
