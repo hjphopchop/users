@@ -5,10 +5,12 @@ import Service from '../API/Service'
 import Loader from './UI/loader/Loader'
 import BasicBytton from './UI/button/BasicBytton'
 import SidePanel from './UI/sidePanel/SidePanel'
+import { UseSortedUsers } from '../hooks/useUsers'
 
 const UserList = () => {
    const[users, setUsers] = useState([]);
    const[sortedField, setSortedField] = useState(null)
+   const sortedUsers = UseSortedUsers(users, sortedField);
     
     useEffect(() => {
         const fetchData = async() => {
@@ -18,52 +20,7 @@ const UserList = () => {
         fetchData()
        
     }, [])
-   
     
-       let  sortedUsers =[...users];
-       if(sortedField!== null) {
-           switch(sortedField){
-            case 'name':
-            sortedUsers.sort((a,b) => {
-                if(a[sortedField] < b[sortedField]) {
-                    return -1;
-                }
-                if(a[sortedField]>b[sortedField]){
-                    return 1;
-                }
-                return 0;
-            })
-            
-            
-            case "company":
-                sortedUsers.sort((a,b) => {
-                    if(a[sortedField].name < b[sortedField].name) {
-                        return -1;
-                    }
-                    if(a[sortedField].name>b[sortedField].name){
-                        return 1;
-                    }
-                    return 0;
-                })
-                
-           }
-           
-       
-        
-       }
-    
-    
-    
-    
-    if(!users.length){
-        return(
-            <div>
-               <Loader/>
-            </div>
-            
-        )
-    }
-   
   return (
       <div className='rex'>
               <SidePanel
@@ -84,7 +41,6 @@ const UserList = () => {
               )}
     </div>
       </div>
-   
   )
 }
 
