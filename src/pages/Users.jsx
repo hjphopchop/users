@@ -11,6 +11,12 @@ const Users = () => {
     useEffect(() => {
         const fetchData = async() => {
             const response = await Service.getUsers();
+            const responseImg = await Service.getImg();
+            
+            for(let i = 0; i<response.length; i++)
+            {
+                response[i].thumbnailUrl = responseImg[i].thumbnailUrl;
+            }
             setUser(response)
         }
         fetchData()

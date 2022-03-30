@@ -3,7 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+ul{
+    list-style: none;
+}
 
+img{display: block;
+max-width: 100%;
+height: auto;
+border-radius: 50%;}
+.user__img{
+    width: 100px;
+    height: 100px;
+    margin-right: 2vw;
+}
 
 .rex{
     font-size: 1.2rem;
@@ -26,7 +38,7 @@
     display: flex;
     padding: 2vh 3vw;
     margin-top: 2vh;
-    justify-content:space-around ;
+    justify-content:flex-start;
     background-color: rgba(243, 243, 243, 1);
-    align-items: flex-end;
+    align-items:center;
 }

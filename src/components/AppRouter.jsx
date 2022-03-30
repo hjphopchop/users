@@ -7,7 +7,8 @@ const AppRouter = () => {
   return (
     
         <Routes>
-            <Route path='/profile' element={<Profile/>}/>
+            <Route exact path='/profile' element={<Profile/>}/>
+            <Route exact path='/profile/:id' element={<Profile/>}/>
             <Route path='/users' element={<Users/>}/>
             <Route path='*' element={<Navigate to="/users" replace/>} />
             
