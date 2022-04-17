@@ -1,104 +1,84 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import cl from '../styles/UserForm.module.css'
 
-// The following component is an example of your existing Input Component
-
-
-// you can use React.forwardRef to pass the ref too
-
-
-
-const UserForm = ({props}) => {
+const  UserForm = ({firstName, lastName, email,street,city,zipcode,phone,website,comment}) => {
   const { register, handleSubmit } = useForm();
-  const defaultValues = {
-    firstName: props.name,
-    lastName: props.username,
-    email: props.email,
-    street: props.address?.street,
-    city: props.address?.city,
-    zipcode: props.address?.zipcode,
-    phone: props.phone,
-    website: props.website,
-    comment: "",
-  };
-
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <>
+    {website &&
+   <form с onSubmit={handleSubmit(onSubmit)}
+   className={cl.form}>
+
       <label htmlFor="firstName">First Name</label>
       <input
-        defaultValue={defaultValues.firstName}
+      defaultValue={firstName}
         placeholder="bill"
-        {...register("firstName")}
+        {...register("firstName", {required:true})}
       />
 
       <label htmlFor="lastName">Last Name</label>
       <input
-        defaultValue={defaultValues.lastName}
+        defaultValue={lastName}
         placeholder="luo"
-        {...register("lastName")}
+        {...register("lastName", {required:true})}
       />
 
       <label htmlFor="email">Email</label>
       <input
-        defaultValue={defaultValues.email}
+        defaultValue={email}
         placeholder="bluebill1049@hotmail.com"
         type="email"
-        {...register("email")}
+        {...register("email", {required:true})}
       />
+
       <label htmlFor="street">street</label>
       <input
-        defaultValue={defaultValues.street}
+        defaultValue={street}
         placeholder="bluebill1049@hotmail.com"
-       
-        {...register("street")}
+        {...register("street", {required:true})}
       />
 
-<label htmlFor="city">city</label>
+      <label htmlFor="city">city</label>
       <input
-        defaultValue={defaultValues.city}
-       
-       
-        {...register("city")}
+        defaultValue={city}
+        {...register("city", {required:true})}
       />
 
-<label htmlFor="zipcode">zipcode</label>
+      <label htmlFor="zipcode">zipcode</label>
       <input
-        defaultValue={defaultValues.zipcode}
-        
-       
-        {...register("zipcode")}
+        defaultValue={zipcode}
+        {...register("zipcode", {required:true})}
       />
 
-<label htmlFor="phone">phone</label>
+      <label htmlFor="phone">phone</label>
       <input
-        defaultValue={defaultValues.phone}
-        
-       
-        {...register("phone")}
+        defaultValue={phone}
+        {...register("phone", {required:true})}
       />
 
-<label htmlFor="website">website</label>
+      <label htmlFor="website">website</label>
       <input
-        defaultValue={defaultValues.website}
-        
-       
-        {...register("website")}
+        defaultValue={website}
+        {...register("website", {required:true})}
       />
 
       <label htmlFor="comment">comment </label>
       <textarea
-      defaultValue={defaultValues.comment}
+      defaultValue={comment}
       {...register("comment")}
       />
 
-
       <input type="submit" />
     </form>
+    }
+    </>
   );
 };
+
 export default UserForm;
 

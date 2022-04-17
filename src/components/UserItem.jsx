@@ -1,25 +1,27 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
+import BasicBytton from './UI/button/BasicBytton';
 
-
-const UserItem = (props) => {
+const UserItem = ({name, address, company, thumbnailUrl,id}) => {
     const router =useNavigate();
   return (
     <div className='user'>
         <div className='user__img'>
-            <img src= {props.item.thumbnailUrl}></img>
+            <img src= {thumbnailUrl}></img>
            </div>
         <ul> 
-            <li> ФИО: <span>{props.item.name}</span>  </li>
-            <li> Город: <span>{props.item.address.city}</span>  </li>
-            <li> Компания: <span>{props.item.company.name}</span>  </li>
+            <li> ФИО: <span>{name}</span>  </li>
+            <li> Город: <span>{address.city}</span>  </li>
+            <li> Компания: <span>{company.name}</span>  </li>
         </ul>
-        <div>
-            <button
-            onClick={() => router(`/profile/${props.item.id}`)}>Подробнее</button>
+        <div className='user__button'>
+            <BasicBytton
+            onClick={() => router(`/profile/${id}`)}>Подробнее</BasicBytton>
              </div>
     </div>
   )
 }
+
+
 
 export default UserItem
